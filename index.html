@@ -1,152 +1,881 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>TalentAd.agency — Smarter Hiring</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --primary: #3f5efb;
-      --accent: #fc466b;
-      --bg: #f9f9f9;
-      --text: #1a1a1a;
-    }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TalentAd.Agency</title>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --primary-orange: #ff6b35;
+        --dark-bg: #1a1a1a;
+        --light-gray: #f8f8f8;
+        --medium-gray: #666;
+      }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
-    body {
-      font-family: 'Inter', sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-    }
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          sans-serif;
+        line-height: 1.6;
+        color: #333;
+        overflow-x: hidden;
+      }
 
-    header {
-      background: linear-gradient(to right, var(--accent), var(--primary));
-      color: white;
-      padding: 4rem 2rem;
-      text-align: center;
-    }
+      /* Navigation */
+      .navbar {
+        background: var(--dark-bg);
+        padding: 20px 0;
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 1000;
+        transition: all 0.3s ease;
+      }
 
-    header h1 {
-      font-size: 2.5rem;
-      font-weight: 800;
-    }
+      .navbar-brand {
+        color: white !important;
+        font-weight: 600;
+        font-size: 1.3rem;
+        letter-spacing: -0.5px;
+      }
 
-    header p {
-      font-size: 1.2rem;
-      margin-top: 1rem;
-      max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
-    }
+      .navbar-nav {
+        margin-left: auto;
+      }
 
-    section {
-      padding: 4rem 2rem;
-      max-width: 800px;
-      margin: 0 auto;
-    }
+      .navbar-nav .nav-link {
+        color: white !important;
+        font-weight: 400;
+        font-size: 0.95rem;
+        margin: 0 25px;
+        transition: color 0.3s ease;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
 
-    h2 {
-      font-size: 1.75rem;
-      margin-bottom: 1rem;
-    }
+      .navbar-nav .nav-link:hover {
+        color: var(--primary-orange) !important;
+      }
 
-    .strategy {
-      display: grid;
-      gap: 2rem;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      margin-top: 2rem;
-    }
+      /* Hero Section */
+      .hero-section {
+        background: var(--dark-bg);
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        color: white;
+        padding-top: 80px;
+        position: relative;
+      }
 
-    .card {
-      background: white;
-      padding: 1.5rem;
-      border-radius: 12px;
-      box-shadow: 0 4px 16px rgba(0,0,0,0.05);
-    }
+      .hero-content {
+        position: relative;
+        z-index: 2;
+      }
 
-    .card h3 {
-      font-size: 1.2rem;
-      margin-bottom: 0.5rem;
-      color: var(--primary);
-    }
+      .hero-text h1 {
+        font-size: 3.2rem;
+        font-weight: 300;
+        line-height: 1.2;
+        margin-bottom: 15px;
+        letter-spacing: -1px;
+      }
 
-    footer {
-      text-align: center;
-      padding: 2rem;
-      font-size: 0.9rem;
-      color: #555;
-    }
+      .hero-text p {
+        font-size: 1.1rem;
+        color: #ccc;
+        font-weight: 300;
+        margin-bottom: 0;
+      }
 
-    a {
-      color: var(--accent);
-      text-decoration: none;
-    }
+      .hero-image-container {
+        position: relative;
+        height: 450px;
+        border-radius: 8px;
+        overflow: hidden;
+      }
 
-    a:hover {
-      text-decoration: underline;
-    }
-  </style>
-</head>
-<body>
+      .hero-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        filter: brightness(0.7);
+      }
 
-  <header>
-    <h1>TalentAd.agency</h1>
-    <p>We help companies hire better, faster, and cheaper — with precision prescreening and zero fluff.</p>
-  </header>
+      .hero-image-overlay {
+        position: absolute;
+        bottom: 30px;
+        left: 30px;
+        right: 30px;
+        background: rgba(255, 107, 53, 0.95);
+        color: white;
+        padding: 25px;
+        border-radius: 6px;
+      }
 
-  <section>
-    <h2>Our Strategy</h2>
-    <p>TalentAd.agency is a modern hiring service that specializes in prescreening candidates before they ever reach your inbox. We combine expert curation, automation, and human insights to reduce time-to-hire and cost-per-hire drastically.</p>
+      .hero-image-overlay h3 {
+        font-size: 1.1rem;
+        font-weight: 600;
+        margin-bottom: 8px;
+      }
 
-    <div class="strategy">
-      <div class="card">
-        <h3>Prescreened Talent</h3>
-        <p>We screen for technical fit, soft skills, and culture match so you only meet people who can deliver.</p>
+      .hero-image-overlay p {
+        font-size: 0.9rem;
+        margin: 0;
+        line-height: 1.4;
+      }
+
+      .hero-btn {
+        display: inline-block;
+        margin-top: 20px;
+        padding: 14px 36px;
+        font-size: 18px;
+        font-weight: 600;
+        color: #fff;
+        background: linear-gradient(135deg, #e65c00, #ff7e29);
+        border: none;
+        border-radius: 50px;
+        text-decoration: none;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        transition: all 0.3s ease;
+      }
+
+      .hero-btn:hover {
+        background: linear-gradient(135deg, #ff7e29, #e65c00);
+        transform: translateY(-3px);
+        box-shadow: 0 6px 14px rgba(0, 0, 0, 0.25);
+      }
+
+      .hero-btn:active {
+        transform: translateY(0);
+        box-shadow: 0 3px 7px rgba(0, 0, 0, 0.2);
+      }
+
+      /* Strategy Section */
+      .strategy-section {
+        padding: 100px 0;
+        background: white;
+      }
+
+      .section-title {
+        font-size: 2.8rem;
+        font-weight: 600;
+        text-align: center;
+        margin-bottom: 30px;
+        color: #333;
+        letter-spacing: -1px;
+      }
+
+      .section-description {
+        text-align: center;
+        color: var(--medium-gray);
+        font-size: 1rem;
+        max-width: 700px;
+        margin: 0 auto 80px;
+        line-height: 1.7;
+      }
+
+      .strategy-container {
+        max-width: 1000px;
+        margin: 0 auto;
+      }
+
+      .strategy-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto auto;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+      }
+
+      .strategy-card {
+        position: relative;
+      }
+
+      .strategy-card.image-card {
+        height: 350px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .strategy-card.text-card {
+        padding: 50px 40px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      .strategy-card.orange {
+        background: var(--primary-orange);
+        color: white;
+      }
+
+      .strategy-card.white {
+        background: white;
+        border-right: 1px solid #e5e5e5;
+        border-bottom: 1px solid #e5e5e5;
+      }
+
+      .strategy-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        filter: brightness(0.6);
+      }
+
+      .strategy-overlay {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+        color: white;
+        padding: 40px 30px 30px;
+      }
+
+      .strategy-overlay h3 {
+        font-size: 1.4rem;
+        font-weight: 600;
+        margin-bottom: 15px;
+      }
+
+      .strategy-overlay p {
+        font-size: 0.9rem;
+        line-height: 1.6;
+        margin: 0;
+      }
+
+      .strategy-card.text-card h3 {
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin-bottom: 20px;
+      }
+
+      .strategy-card.text-card p {
+        font-size: 0.95rem;
+        line-height: 1.7;
+        margin: 0;
+      }
+
+      /* Why Section */
+      .why-image-container {
+        position: relative;
+        display: inline-block;
+        width: 100%;
+      }
+
+      .why-image {
+        width: 100%;
+        border-radius: 12px;
+        display: block;
+      }
+
+      .features-bottom {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        display: flex;
+        justify-content: center;
+        align-items: stretch;
+        gap: 15px;
+        padding: 15px;
+        box-sizing: border-box;
+        flex-wrap: wrap;
+      }
+
+      .feature-item {
+        flex: 2 2 calc(25% - 15px);
+        max-width: 250px;
+        min-height: 100px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: left;
+        padding: 15px 20px;
+        color: #fff;
+        background: #e65c00;
+        font-weight: bold;
+        border-radius: 6px;
+        transition: background 0.3s ease;
+      }
+
+      .feature-item:hover {
+        background: #ff7e29;
+      }
+
+      @media (max-width: 900px) {
+        .features-bottom {
+          position: static; /* remove absolute */
+          margin-top: 20px; /* spacing between image & boxes */
+          justify-content: center;
+          width: 100%; /* match container width */
+        }
+        .feature-item {
+          flex: 0 0 48%; /* two per row, small gap */
+          max-width: none;
+          margin-bottom: 15px;
+        }
+      }
+
+      /* Small Mobile → stacked, full image width */
+      @media (max-width: 500px) {
+        .features-bottom {
+          width: 100%; /* same width as image */
+          flex-direction: column;
+          gap: 10px; /* spacing between boxes */
+        }
+        .feature-item {
+          flex: 0 0 100%; /* full width of container */
+          max-width: 100%;
+          margin-bottom: 0; /* gap controlled by container */
+        }
+      }
+
+      /* Contact Section */
+      .contact-section {
+        padding: 80px 0;
+        text-align: center;
+        background: #f5f5f5; /* soft background to match scheme */
+        color: #333;
+      }
+
+      .contact-btn {
+        display: inline-block;
+        padding: 12px 30px;
+        font-size: 18px;
+        font-weight: bold;
+        color: #fff;
+        background: #e65c00;
+        border-radius: 50px;
+        text-decoration: none;
+        transition: 0.3s ease;
+      }
+
+      .contact-btn:hover {
+        background: #ff7e29;
+      }
+
+      /* Footer */
+      .footer {
+        background: var(--dark-bg);
+        color: white;
+        padding: 60px 0 30px;
+      }
+
+      .footer-content {
+        display: grid;
+        grid-template-columns: 6fr 3fr;
+        gap: 40px;
+        margin-bottom: 40px;
+      }
+
+      .footer-section h5 {
+        color: var(--primary-orange);
+        font-size: 1.1rem;
+        font-weight: 600;
+        margin-bottom: 25px;
+      }
+
+      .footer-section ul {
+        list-style: none;
+        padding: 0;
+      }
+
+      .footer-section ul li {
+        margin-bottom: 10px;
+      }
+
+      .footer-section ul li a {
+        color: #ccc;
+        text-decoration: none;
+        font-size: 0.9rem;
+        transition: color 0.3s ease;
+      }
+
+      .footer-section ul li a:hover {
+        color: var(--primary-orange);
+      }
+
+      .footer-info p {
+        color: #ccc;
+        font-size: 0.9rem;
+        margin-bottom: 8px;
+        line-height: 1.6;
+      }
+
+      .social-links a {
+        color: #ccc;
+        font-size: 1.1rem;
+        margin-right: 15px;
+        transition: color 0.3s ease;
+      }
+
+      .social-links a:hover {
+        color: var(--primary-orange);
+      }
+
+      .footer-bottom {
+        border-top: 1px solid #333;
+        padding-top: 25px;
+        text-align: center;
+        color: #999;
+        font-size: 0.85rem;
+      }
+
+      /* Animations */
+      .fade-in {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 0.8s ease;
+      }
+
+      .fade-in.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* Responsive Design */
+      @media (max-width: 992px) {
+        .strategy-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .features-row {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .footer-content {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .hero-text h1 {
+          font-size: 2.2rem;
+        }
+
+        .features-row {
+          grid-template-columns: 1fr;
+        }
+
+        .contact-form-wrapper {
+          padding: 40px 30px;
+        }
+
+        .submit-btn {
+          float: none;
+          width: 100%;
+        }
+
+        .footer-content {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+      <div class="container">
+        <a class="navbar-brand" href="#home">TalentAd.Agency</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="#strategy">Our Strategy</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#why-us">Why Us?</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#contact">Contact Us</a>
+            </li>
+          </ul>
+        </div>
       </div>
-      <div class="card">
-        <h3>Rapid Shortlists</h3>
-        <p>Get a shortlist of qualified candidates within days — not weeks. Our process is fast and lean.</p>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section">
+      <div class="container">
+        <div class="row align-items-center">
+          <!-- Left Side: Main Hero Content -->
+          <div class="col-lg-7">
+            <div class="hero-content">
+              <div class="hero-text">
+                <h1>Hire top talent in days, not months.</h1>
+                <p>
+                  TalentAd.agency makes recruitment simple with expert-led
+                  screening, transparent pricing, and candidates who are ready
+                  to hit the ground running.
+                </p>
+                <a href="#contact" class="hero-btn">Start Hiring Today</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Side: Image with Overlay Tagline -->
+          <div class="col-lg-5">
+            <div class="hero-image-container">
+              <img
+                src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&h=450&fit=crop&crop=faces"
+                alt="Team meeting"
+                class="hero-image"
+              />
+              <div class="hero-image-overlay">
+                <h3>Fast. Affordable. Reliable.</h3>
+                <p>Because hiring shouldn’t slow your business down.</p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="card">
-        <h3>Transparent Pricing</h3>
-        <p>No commissions. No percentages. Just fixed-fee, affordable hiring — without compromising quality.</p>
+    </section>
+
+    <!-- Strategy Section -->
+    <section id="strategy" class="strategy-section">
+      <div class="container">
+        <h2 class="section-title fade-in">Our Strategy</h2>
+        <p class="section-description fade-in">
+          TalentAd.agency is a modern hiring service that specializes in
+          pre-screening candidates before they ever reach your inbox. We combine
+          expert curation, automation, and human insights to reduce time-to-hire
+          and cost-per-hire drastically.
+        </p>
+
+        <div class="strategy-container fade-in">
+          <div class="strategy-grid">
+            <!-- Top Left - Image Card -->
+            <div class="strategy-card image-card">
+              <img
+                src="https://images.unsplash.com/photo-1556761175-b413da4baf72?w=500&h=350&fit=crop&crop=center"
+                alt="Pre-screening process"
+                class="strategy-image"
+              />
+              <div class="strategy-overlay">
+                <h3>Pre-screened Talent</h3>
+                <p>
+                  Every candidate that reaches your inbox has been through our
+                  rigorous pre-screening process. We eliminate unqualified
+                  applicants before they reach you. We combine expert screening
+                  with technology to ensure only the most qualified candidates
+                  make it to your review.
+                </p>
+              </div>
+            </div>
+
+            <!-- Top Right - Orange Card -->
+            <div class="strategy-card text-card orange">
+              <h3>Rapid Shortlists</h3>
+              <p>
+                Get a shortlist of qualified candidates delivered to you within
+                48 hours of posting. Our streamlined process and vast talent
+                network allow us to move at the speed your business requires,
+                without compromising on quality.
+              </p>
+            </div>
+
+            <!-- Bottom Left - White Card -->
+            <div class="strategy-card text-card white">
+              <h3>Transparent Pricing</h3>
+              <p>
+                No commissions. No percentages. Just fixed-fee, affordable
+                hiring — without compromising on quality.
+              </p>
+            </div>
+
+            <!-- Bottom Right - Image Card -->
+            <div class="strategy-card image-card">
+              <img
+                src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=500&h=350&fit=crop&crop=center"
+                alt="Tech hiring experts"
+                class="strategy-image"
+              />
+              <div class="strategy-overlay">
+                <h3>Tech Hiring Experts</h3>
+                <p>
+                  We specialise in IT and tech hiring. Our team understands
+                  technical skills and what makes a great technical hire.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="card">
-        <h3>Tech Hiring Experts</h3>
-        <p>We specialize in IT and digital roles. Our team understands devs, designers, and product thinkers.</p>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section id="why-us" class="why-section">
+      <div class="container">
+        <h2 class="section-title fade-in">Why Choose Us?</h2>
+        <p class="section-description fade-in">
+          Most recruitment is expensive and slow. We built TalentAd.agency to
+          make hiring as efficient and effective as modern teams deserve.
+        </p>
+
+        <div class="why-image-container fade-in">
+          <img
+            src="https://images.unsplash.com/photo-1657727534671-f0c753f3a098?w=1200&auto=format&fit=crop&q=80"
+            alt="Professional portrait"
+            class="why-image"
+          />
+
+          <!-- Feature Boxes at Bottom -->
+          <div class="features-bottom">
+            <div class="feature-item">
+              <h4>Fixed low-cost model</h4>
+            </div>
+            <div class="feature-item">
+              <h4>Human-led screening process</h4>
+            </div>
+            <div class="feature-item">
+              <h4>Fast turnaround on roles</h4>
+            </div>
+            <div class="feature-item">
+              <h4>100% remote-friendly hiring</h4>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section>
-    <h2>Why Choose Us?</h2>
-    <p>Most recruitment is expensive and slow. We built TalentAd.agency to make hiring as efficient and effective as modern teams deserve.</p>
-    <ul style="margin-top: 1rem; padding-left: 1.25rem;">
-      <li>✅ Fixed low-cost model</li>
-      <li>✅ Human-led screening process</li>
-      <li>✅ Fast turnaround on roles</li>
-      <li>✅ 100% remote-friendly hiring</li>
-    </ul>
-  </section>
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+      <div class="container">
+        <h2 class="section-title">Get in Touch</h2>
+        <p class="section-description">
+          Ready to scale your team without the usual hiring headaches?
+        </p>
+        <a
+          href="https://www.linkedin.com/company/betabuilders-org/posts/?feedView=all"
+          class="contact-btn"
+        >
+          Contact Us
+        </a>
+      </div>
+    </section>
 
-  <section>
-    <h2>Get in Touch</h2>
-    <p>Ready to scale your team without the usual hiring headaches?</p>
-    <p><a href="mailto:hello@talentad.agency">📧 hello@talentad.agency</a></p>
-  </section>
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-section">
+            <h5>TalentAd.Agency</h5>
+            <p
+              style="
+                color: #ccc;
+                font-size: 0.9rem;
+                line-height: 1.6;
+                margin-bottom: 20px;
+              "
+            >
+              Stay updated with our Latest Trends. Follow Us On:
+            </p>
+            <div class="social-links">
+              <a href="#" aria-label="Facebook"
+                ><i class="fab fa-facebook"></i
+              ></a>
+              <a href="#" aria-label="LinkedIn"
+                ><i class="fab fa-linkedin"></i
+              ></a>
+            </div>
+          </div>
 
-  <footer>
-    &copy; 2025 TalentAd.agency — Smarter Hiring, Done Right.
-  </footer>
+          <div class="footer-section">
+            <h5>Services</h5>
+            <ul>
+              <li><a href="#strategy">Our Strategy</a></li>
+              <li><a href="#why-us">Why Us?</a></li>
+              <li><a href="#contact">Contact Us</a></li>
+            </ul>
+          </div>
 
-</body>
+          <!-- <div class="footer-section">
+            <h5>Visit Us</h5>
+            <ul>
+              <li><a href="#">123 </a></li>
+              <li><a href="#">TalentAd.Agency</a></li>
+              <li><a href="#">Blog</a></li>
+            </ul>
+          </div> -->
+        </div>
+
+        <div class="footer-bottom">
+          <p>&copy; 2025 TalentAd.Agency - Smarter Hiring, Done Right.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script>
+      // Smooth scrolling navigation
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute("href"));
+          const navbarHeight = document.querySelector(".navbar").offsetHeight;
+          const elementPosition = target.offsetTop - navbarHeight;
+
+          window.scrollTo({
+            top: elementPosition,
+            behavior: "smooth",
+          });
+        });
+      });
+
+      // Navbar background on scroll
+      window.addEventListener("scroll", function () {
+        const navbar = document.querySelector(".navbar");
+        if (window.scrollY > 50) {
+          navbar.style.background = "rgba(26, 26, 26, 0.95)";
+          navbar.style.backdropFilter = "blur(10px)";
+        } else {
+          navbar.style.background = "var(--dark-bg)";
+          navbar.style.backdropFilter = "none";
+        }
+      });
+
+      // Scroll animations
+      function animateOnScroll() {
+        const elements = document.querySelectorAll(".fade-in");
+        const windowHeight = window.innerHeight;
+
+        elements.forEach((element) => {
+          const elementTop = element.getBoundingClientRect().top;
+          const elementVisible = 100;
+
+          if (elementTop < windowHeight - elementVisible) {
+            element.classList.add("visible");
+          }
+        });
+      }
+
+      window.addEventListener("scroll", animateOnScroll);
+      window.addEventListener("load", animateOnScroll);
+
+      // Form submission handler
+      function handleFormSubmit(event) {
+        event.preventDefault();
+
+        const button = event.target.querySelector(".submit-btn");
+        const originalText = button.textContent;
+
+        button.innerHTML =
+          '<i class="fas fa-spinner fa-spin me-2"></i>Sending...';
+        button.disabled = true;
+
+        setTimeout(() => {
+          button.innerHTML = '<i class="fas fa-check me-2"></i>Sent!';
+          button.style.background = "#28a745";
+
+          setTimeout(() => {
+            event.target.reset();
+            button.innerHTML = originalText;
+            button.style.background = "var(--primary-orange)";
+            button.disabled = false;
+          }, 2500);
+        }, 1500);
+      }
+
+      // Strategy card hover effects
+      document.querySelectorAll(".strategy-card").forEach((card) => {
+        card.addEventListener("mouseenter", function () {
+          this.style.transform = "translateY(-5px)";
+          this.style.transition = "transform 0.3s ease";
+        });
+
+        card.addEventListener("mouseleave", function () {
+          this.style.transform = "translateY(0)";
+        });
+      });
+
+      // Feature item hover effects
+      document.querySelectorAll(".feature-item").forEach((item) => {
+        item.addEventListener("mouseenter", function () {
+          this.style.transform = "translateY(-8px)";
+          this.style.boxShadow = "0 10px 25px rgba(255, 107, 53, 0.3)";
+        });
+
+        item.addEventListener("mouseleave", function () {
+          this.style.transform = "translateY(0)";
+          this.style.boxShadow = "none";
+        });
+      });
+
+      // Active navigation highlighting
+      window.addEventListener("scroll", function () {
+        const sections = document.querySelectorAll("section[id]");
+        const navLinks = document.querySelectorAll(".navbar-nav .nav-link");
+
+        let current = "";
+        sections.forEach((section) => {
+          const sectionTop = section.offsetTop - 120;
+          if (pageYOffset >= sectionTop) {
+            current = section.getAttribute("id");
+          }
+        });
+
+        navLinks.forEach((link) => {
+          link.style.color = "white";
+          if (link.getAttribute("href") === "#" + current) {
+            link.style.color = "var(--primary-orange)";
+          }
+        });
+      });
+
+      // Page load animation
+      window.addEventListener("load", function () {
+        document.body.style.opacity = "0";
+        document.body.style.transition = "opacity 0.5s ease";
+        setTimeout(() => {
+          document.body.style.opacity = "1";
+          animateOnScroll();
+        }, 100);
+      });
+
+      // Typing effect for hero title
+      function typeWriter(element, text, speed = 40) {
+        let i = 0;
+        element.innerHTML = "";
+        function typing() {
+          if (i < text.length) {
+            element.innerHTML += text.charAt(i);
+            i++;
+            setTimeout(typing, speed);
+          }
+        }
+        typing();
+      }
+
+      setTimeout(() => {
+        const heroTitle = document.querySelector(".hero-text h1");
+        const originalText = heroTitle.textContent;
+        typeWriter(heroTitle, originalText, 30);
+      }, 800);
+
+      console.log("TalentAd.Agency website loaded successfully!");
+    </script>
+  </body>
 </html>
