@@ -144,3 +144,21 @@ setTimeout(() => {
 }, 800);
 
 console.log("TalentAd.Agency website loaded successfully!");
+
+// Closing the navbar on link/button click in mobile view
+document.addEventListener("DOMContentLoaded", function () {
+  const navbarCollapse = document.getElementById("navbarNav");
+  const navbarToggler = document.querySelector(".navbar-toggler");
+
+  // Collapse navbar on any click inside it (links, buttons, theme toggle, etc.)
+  document.querySelectorAll("#navbarNav a, #navbarNav button").forEach((el) => {
+    el.addEventListener("click", () => {
+      const isMobile = window.getComputedStyle(navbarToggler).display !== "none";
+      const isExpanded = navbarCollapse.classList.contains("show");
+
+      if (isMobile && isExpanded) {
+        navbarToggler.click(); // Simulate toggler click to collapse
+      }
+    });
+  });
+});
